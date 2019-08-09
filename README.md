@@ -13,9 +13,9 @@
 ### Implementation
 - Generate 12 pairs of cards
   - Card:
-    - Faceup: Boolean
-    - Value: Number
+    - Image: String URL
     - Name: String
+    - Matches: Number
 - Duplicate to generate pairs
 - Shuffle order
 - Display facedown cards
