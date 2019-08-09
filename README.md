@@ -1,16 +1,16 @@
-#Grassroots Memory Game
+# Grassroots Memory Game
 ## Built with vanilla JS
 
-##Design Plan
+## Design Plan
 
-###Functionality
+### Functionality
 - Deck of 24 cards
 - Matching cards will be in pairs
 - Randomized order for every game
 - Player selects one card at a time, compares up to two cards per turn
 - Game ends when all cards are matched
 
-###Implementation
+### Implementation
 - Generate 12 pairs of cards
   - Card:
     - Faceup: Boolean
