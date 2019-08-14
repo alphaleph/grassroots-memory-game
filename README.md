@@ -11,11 +11,10 @@
 - Game ends when all cards are matched
 
 ### Implementation
-- Generate 12 pairs of cards
+- Generate deck, consists of 12 pairs of cards
   - Card:
     - Image: String URL
     - Name: String
-    - Matches: Number
 - Duplicate to generate pairs
 - Shuffle order
 - Display facedown cards
