@@ -27,31 +27,36 @@ deck.shuffle();
 
 initializeCardsView();
 
-
+//Game Management
 let count = 0;
 let firstGuess = '', secondGuess = '';
 let previousTarget = null;
 const ANIMATION_DELAY = 1000;
 
 grid.addEventListener('click', (event) => {
-  let clicked = event.target;
+  const clicked = event.target;
 
   //Ignore if grid is selected
-  if (clicked.nodeName === 'SECTION' || clicked === previousTarget) {
-    return
+  if (
+    clicked.nodeName === 'SECTION' || 
+    clicked === previousTarget || 
+    clicked.parentNode.classList.contains('selected') ||
+    clicked.parentNode.classList.contains('match')
+    ) {
+      return
   }
 
   if (count < 2) {
     count++;
     if (count === 1) {
-      firstGuess = clicked.dataset.name;
-      clicked.classList.add('selected');
+      firstGuess = clicked.parentNode.dataset.name;
+      clicked.parentNode.classList.add('selected');
     } else {
-      secondGuess = clicked.dataset.name;
-      clicked.classList.add('selected');
+      secondGuess = clicked.parentNode.dataset.name;
+      clicked.parentNode.classList.add('selected');
     }
 
-    if (firstGuess !== '' && secondGuess !== '') {
+    if (firstGuess && secondGuess) {
       if (firstGuess === secondGuess) {
         setTimeout(matchifyView, ANIMATION_DELAY);
       }
@@ -64,22 +69,23 @@ grid.addEventListener('click', (event) => {
 })
 
 
-
-//TODO: Display facedown?
-
-// - While all cards are not matched
-//   - Player reveals up to two cards per turn
-//     - Determine if selected cards are a match; flip down if not
-// - When game ends or is cancelled, display closing/reset prompt.
-
 function initializeCardsView() {
   for (let i = 0; i < deck.size; i++) {
       const card = document.createElement('div');
       card.classList.add('card');
       card.id = RandFct.randHTMLID();
       card.dataset.name = deck.getCard(i).name;
-      card.style.backgroundImage = `url(${deck.getCard(i).img})`;
+
+      const front = document.createElement('div');
+      front.classList.add('front');
+
+      const back = document.createElement('div');
+      back.classList.add('back');
+      back.style.backgroundImage = `url(${deck.getCard(i).img})`;
+      
       grid.appendChild(card);
+      card.appendChild(front);
+      card.appendChild(back);
   }
 }
 
@@ -94,6 +100,7 @@ function resetGuesses() {
   firstGuess = '';
   secondGuess = '';
   count = 0;
+  previousTarget = null;
 
   let selected = document.querySelectorAll('.selected');
   selected.forEach( card => {
