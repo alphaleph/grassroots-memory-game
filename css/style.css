@@ -26,3 +26,8 @@ body {
   height: 12em;
   width: 12em;
 }
+
+.selected {
+  border: 4px solid blue;
+}
+

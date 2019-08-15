@@ -26,6 +26,15 @@ game.appendChild(grid);
 deck.shuffle();
 
 initializeCardsView();
+
+grid.addEventListener('click', (event) => {
+  let clicked = event.target;
+  if (clicked.nodeName === 'SECTION') {
+    return
+  }
+  clicked.classList.add('selected');
+})
+
 //TODO: Display facedown?
 
 // - While all cards are not matched
