@@ -31,6 +31,7 @@ initializeCardsView();
 let count = 0;
 let firstGuess = '', secondGuess = '';
 let previousTarget = null;
+const ANIMATION_DELAY = 1000;
 
 grid.addEventListener('click', (event) => {
   let clicked = event.target;
@@ -52,10 +53,9 @@ grid.addEventListener('click', (event) => {
 
     if (firstGuess !== '' && secondGuess !== '') {
       if (firstGuess === secondGuess) {
-        matchifyView();
+        setTimeout(matchifyView, ANIMATION_DELAY);
       }
-      resetGuesses();
-      console.log(`Count after reset is: ${count}`);
+      setTimeout(resetGuesses, ANIMATION_DELAY);
     }
 
     previousTarget = clicked;
