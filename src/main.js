@@ -54,10 +54,12 @@ grid.addEventListener('click', (event) => {
       if (firstGuess === secondGuess) {
         matchifyView();
       }
+      resetGuesses();
+      console.log(`Count after reset is: ${count}`);
     }
 
     previousTarget = clicked;
-
+  
   }
 })
 
@@ -83,7 +85,18 @@ function initializeCardsView() {
 
 function matchifyView() {
   let selected = document.querySelectorAll('.selected');
-  selected.forEach(card => {
+  selected.forEach( card => {
     card.classList.add('match');
   });
+}
+
+function resetGuesses() {
+  firstGuess = '';
+  secondGuess = '';
+  count = 0;
+
+  let selected = document.querySelectorAll('.selected');
+  selected.forEach( card => {
+    card.classList.remove('selected')
+  })
 }
