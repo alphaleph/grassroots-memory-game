@@ -27,13 +27,41 @@ deck.shuffle();
 
 initializeCardsView();
 
+
+let count = 0;
+let firstGuess = '', secondGuess = '';
+let previousTarget = null;
+
 grid.addEventListener('click', (event) => {
   let clicked = event.target;
-  if (clicked.nodeName === 'SECTION') {
+
+  //Ignore if grid is selected
+  if (clicked.nodeName === 'SECTION' || clicked === previousTarget) {
     return
   }
-  clicked.classList.add('selected');
+
+  if (count < 2) {
+    count++;
+    if (count === 1) {
+      firstGuess = clicked.dataset.name;
+      clicked.classList.add('selected');
+    } else {
+      secondGuess = clicked.dataset.name;
+      clicked.classList.add('selected');
+    }
+
+    if (firstGuess !== '' && secondGuess !== '') {
+      if (firstGuess === secondGuess) {
+        matchifyView();
+      }
+    }
+
+    previousTarget = clicked;
+
+  }
 })
+
+
 
 //TODO: Display facedown?
 
@@ -51,4 +79,11 @@ function initializeCardsView() {
       card.style.backgroundImage = `url(${deck.getCard(i).img})`;
       grid.appendChild(card);
   }
+}
+
+function matchifyView() {
+  let selected = document.querySelectorAll('.selected');
+  selected.forEach(card => {
+    card.classList.add('match');
+  });
 }
