@@ -1,5 +1,4 @@
 'use strict'
-import * as RandFct from './util/random-functions.js';
 import Deck from './models/deck.js';
 
 //Deck Initialization
@@ -15,13 +14,10 @@ for (let i = 0; i < NUM_UNIQUE_CARDS; i++) {
   }
 }
 
+
+
 //Game Initialization
-const game = document.querySelector('#game');
-
-const grid = document.createElement('section');
-grid.setAttribute('class', 'grid');
-
-game.appendChild(grid);
+initializeGameView();
 
 deck.shuffle();
 
@@ -68,42 +64,18 @@ grid.addEventListener('click', (event) => {
   }
 })
 
-
-function initializeCardsView() {
-  for (let i = 0; i < deck.size; i++) {
-      const card = document.createElement('div');
-      card.classList.add('card');
-      card.id = RandFct.randHTMLID();
-      card.dataset.name = deck.getCard(i).name;
-
-      const front = document.createElement('div');
-      front.classList.add('front');
-
-      const back = document.createElement('div');
-      back.classList.add('back');
-      back.style.backgroundImage = `url(${deck.getCard(i).img})`;
-      
-      grid.appendChild(card);
-      card.appendChild(front);
-      card.appendChild(back);
-  }
-}
-
-function matchifyView() {
-  let selected = document.querySelectorAll('.selected');
-  selected.forEach( card => {
-    card.classList.add('match');
-  });
-}
-
 function resetGuesses() {
   firstGuess = '';
   secondGuess = '';
   count = 0;
   previousTarget = null;
 
-  let selected = document.querySelectorAll('.selected');
-  selected.forEach( card => {
-    card.classList.remove('selected')
-  })
+  clearSelectedView();
 }
+
+// import GameController from './controllers/game-controller.js';
+// import GameView from './views/game-view.js';
+// import Deck from './models/deck.js';
+
+// const app = new GameController(new Deck(), new GameView());
+
