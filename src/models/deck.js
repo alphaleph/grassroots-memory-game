@@ -4,8 +4,16 @@ import Card from './card.js';
 import * as ListFct from '../util/list-functions.js';
 
 class Deck {
-  constructor() {
+  constructor(numUniqCards = 12, numCopies = 2) {
     this.deck = [];
+
+    for (let i = 0; i < numUniqCards; i++) {
+      for (let j = 0; j < numCopies; j++) {
+        let name = 'card' + i;
+        let url = './../assets/' + name + '.jpg';
+        this.addCard(name, url);
+      }
+    }
   }
 
   get size() {
