@@ -19,12 +19,12 @@ front {
 }
 
 front {
-  background: #fab492 url("../assets/giftbox.png") no-repeat center center / contain; 
+  background: $card-front-color url("../assets/giftbox.png") no-repeat center center / contain; 
 }
 
 back {
   transform: rotateY(180deg);
-  background-color: white;
+  background-color: $card-back-color;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -36,6 +36,6 @@ selected {
 
 match {
   front {
-    background: purple !important;
+    background: $card-match-color !important;
   }
 }
