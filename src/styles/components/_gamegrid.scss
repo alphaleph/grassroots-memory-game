@@ -1,0 +1,12 @@
+body {
+  margin: 1.5em 0;
+  background: #6589f9;
+}
+
+grid {
+  max-width: 80em;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
