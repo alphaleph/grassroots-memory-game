@@ -1,4 +1,25 @@
+/*
+########################
+Base Theme Colors
+########################
+*/
+
 $main-background-color:#6589f9;
 $card-back-color:  white;
 $card-front-color: #fab492;
 $card-match-color: purple;
+
+/*
+########################
+Breakpoints
+########################
+*/
+
+//Small tablets (portrait) and large smartphones (landscape)
+$screen-sm-min: 576px;
+//Small tablets (landscape)
+$screen-md-min: 768px;
+//Regular desktops and laptops
+$screen-lg-min: 992px;
+//Large desktops and laptops
+$screen-xl-min: 1200px;
