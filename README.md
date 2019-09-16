@@ -1,6 +1,12 @@
 # Grassroots Memory Game
 ## Built with vanilla JS
 
+## Usage
+```
+// Runs on localhost:8080
+npm run start
+```
+
 ## Design Plan
 
 ### Functionality
